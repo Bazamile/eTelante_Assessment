@@ -61,16 +61,8 @@ public class WebTables {
     }
 
     public static void clickAddUserButton() {
-       // new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(AddUser_xpath));
         AddUser_xpath.click();
     }
-
-//    public static void AddUserDetails() {
-//        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(AddUserForm_xpath));
-//        String AddUserText = AddUserForm_xpath.getText();
-//        Assert.assertEquals(AddUserText, "Add User");
-//    }
-
 
     public static void enterFirstName() {
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(FirstName_xpath)).sendKeys("Fname1");
