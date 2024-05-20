@@ -10,7 +10,6 @@ import org.testng.Assert;
 import java.time.Duration;
 import java.util.Random;
 
-import static org.bouncycastle.oer.its.ieee1609dot2.CertificateId.name;
 
 public class WebTables {
 
@@ -45,13 +44,6 @@ public class WebTables {
     static WebElement Close_xpath_button;
     static Faker faker = new Faker();
     static Random random = new Random();
-
-
-
-
-
-
-
 
 
     public WebTables(WebDriver driver) {
