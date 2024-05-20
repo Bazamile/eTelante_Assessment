@@ -1,7 +1,6 @@
 package Tests;
 
-import Pages.WebTables;
-import Utils.ReadFromExcel;
+import Utils.TakeScreenshots;
 import org.testng.annotations.Test;
 
 @Test
@@ -10,6 +9,7 @@ public class WebTablesTests extends Base {
     public void verifyFirstnameIsDisplayedWebTablesPageTests() {
 
         webTables.verifyFirstnameIsDisplayedWebTablesPage();
+        takeScreenshots.takeSnapShot(driver,"Verify the column Name");
     }
 
     @Test(dependsOnMethods = {"verifyFirstnameIsDisplayedWebTablesPageTests"})
@@ -19,47 +19,51 @@ public class WebTablesTests extends Base {
 
     @Test(dependsOnMethods = {"clickAddUserButtonTests"})
     public void enterFirstNameTests() {
-        webTables.enterFirstName(ReadFromExcel.FirstName);
+        webTables.enterFirstName();
+        takeScreenshots.takeSnapShot(driver,"Add a user");
     }
 
     @Test(dependsOnMethods = {"enterFirstNameTests"})
     public void enterLastNameTests() {
-        webTables.enterLastName(ReadFromExcel.LastName);
+        webTables.enterLastName();
     }
+
     @Test(dependsOnMethods = {"enterLastNameTests"})
-    public void enterUserNameTests(){
-        webTables.enterUserName(ReadFromExcel.UserName);
+    public void enterUserNameTests() {
+        webTables.enterUserName();
     }
+
     @Test(dependsOnMethods = {"enterUserNameTests"})
-    public void enterPasswordTests(){
-        webTables.enterPassword(ReadFromExcel.Password);
+    public void enterPasswordTests() {
+        webTables.enterPassword();
     }
+
     @Test(dependsOnMethods = {"enterPasswordTests"})
-    public void selectCustomerButtonTests(){
+    public void selectCustomerButtonTests() {
         webTables.selectCustomerButton();
     }
+
     @Test(dependsOnMethods = {"selectCustomerButtonTests"})
-    public void selectRoleButtonTests(){
-        webTables.selectRoleButton(ReadFromExcel.Customer);
+    public void selectRoleButtonTests() {
+        webTables.selectRoleButton();
     }
+
     @Test(dependsOnMethods = {"selectRoleButtonTests"})
-    public void enterEmailTests(){
-        webTables.enterEmail(ReadFromExcel.Email);
+    public void enterEmailTests() {
+        webTables.enterEmail();
 
     }
+
     @Test(dependsOnMethods = {"enterEmailTests"})
-    public void enterCellPhoneTests(){
-        webTables.enterCellPhone(ReadFromExcel.Cell);
+    public void enterCellPhoneTests() {
+        webTables.enterCellPhone();
 
     }
+
     @Test(dependsOnMethods = {"enterCellPhoneTests"})
-    public void clickSaveButtonTests(){
+    public void clickSaveButtonTests() {
         webTables.clickSaveButton();
-
-    }
-    @Test(dependsOnMethods = {"clickSaveButtonTests"})
-    public void clickCloseButtonTests(){
-        webTables.clickCloseButton();
+        takeScreenshots.takeSnapShot(driver,"Added a user to the table");
 
     }
 

@@ -2,12 +2,10 @@ package Tests;
 
 import Pages.WebTables;
 import Utils.BrowserFactory;
-import Utils.ReadFromExcel;
 import Utils.TakeScreenshots;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import java.io.IOException;
 
 
 public class Base {
@@ -17,16 +15,6 @@ public class Base {
     WebTables webTables = PageFactory.initElements(driver, WebTables.class);
     TakeScreenshots takeScreenshots = new TakeScreenshots();
 
-    ReadFromExcel readFromExcel;
-
-    {
-        try {
-            readFromExcel = new ReadFromExcel();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
 
 
 }
