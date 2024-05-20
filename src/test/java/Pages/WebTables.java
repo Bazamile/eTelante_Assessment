@@ -1,4 +1,5 @@
 package Pages;
+import com.github.javafaker.Faker;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,6 +8,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import java.time.Duration;
+import java.util.Random;
+
+import static org.bouncycastle.oer.its.ieee1609dot2.CertificateId.name;
 
 public class WebTables {
 
@@ -39,6 +43,11 @@ public class WebTables {
     static WebElement Save_xpath_Button;
     @FindBy(xpath = "//button[@ng-click='close()'][contains(.,'Close')]")
     static WebElement Close_xpath_button;
+    static Faker faker = new Faker();
+    static Random random = new Random();
+
+
+
 
 
 
@@ -68,11 +77,12 @@ public class WebTables {
         LastName_xpath.sendKeys("LName1");
     }
     public static void enterUserName() {
-        String usernamePrefix = "user";
-        int currentNumber = 1;
-        String username = usernamePrefix + currentNumber++;
+        String fullName = faker.name().fullName();
+        String name = fullName.split(" ")[0];
+        int randomNumbers = random.nextInt(10000000) + 1;
+        String username = name + "_" + randomNumbers;
         User_xpath.sendKeys(username);
-        currentNumber++;
+
 
     }
     public static void enterPassword() {
