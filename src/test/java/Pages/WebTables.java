@@ -1,4 +1,6 @@
 package Pages;
+
+import com.github.javafaker.Faker;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -6,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
 import java.time.Duration;
 
 public class WebTables {
@@ -41,10 +44,6 @@ public class WebTables {
     static WebElement Close_xpath_button;
 
 
-
-
-
-
     public WebTables(WebDriver driver) {
         this.driver = driver;
     }
@@ -59,50 +58,62 @@ public class WebTables {
         AddUser_xpath.click();
     }
 
-    public static void enterFirstName() {
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(FirstName_xpath)).sendKeys("Fname1");
+    public static void enterFirstName(String FirstName) {
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOf(FirstName_xpath)).sendKeys(FirstName);
     }
 
-    public static void enterLastName() {
+    public static void enterLastName(String LastName) {
 
-        LastName_xpath.sendKeys("LName1");
+        LastName_xpath.sendKeys(LastName);
     }
+
     public static void enterUserName() {
-        String usernamePrefix = "user";
+//        String usernamePrefix = "user";
         int currentNumber = 1;
-        String username = usernamePrefix + currentNumber++;
+        Faker faker = new Faker();
+        String username = faker.name().username();
+        //String username = usernamePrefix + currentNumber++;
         User_xpath.sendKeys(username);
         currentNumber++;
 
     }
-    public static void enterPassword() {
 
-        Password_xpath.sendKeys("Pass1");
+    public static void enterPassword(String Password) {
+
+        Password_xpath.sendKeys(Password);
     }
 
     public static void selectCustomerButton() {
-        WebDriverWait d = new WebDriverWait(driver,Duration.ofSeconds(2));
+        WebDriverWait d = new WebDriverWait(driver, Duration.ofSeconds(2));
         d.until(ExpectedConditions.visibilityOf(Customer_xpath_Radio));
         Customer_xpath_Radio.click();
 
     }
-    public static void selectRoleButton() {
-        WebDriverWait d = new WebDriverWait(driver,Duration.ofSeconds(2));
+
+    public static void selectRoleButton(String Role) {
+        WebDriverWait d = new WebDriverWait(driver, Duration.ofSeconds(2));
         d.until(ExpectedConditions.visibilityOf(Role_xpath_dropdown));
         Role_xpath_dropdown.click();
         Select dr = new Select(Role_xpath_dropdown);
-        dr.selectByVisibleText("Admin");
-}
-    public static void enterEmail() {
-        WebDriverWait d = new WebDriverWait(driver,Duration.ofSeconds(2));
-        Email_xpath.sendKeys("admin@mail.com");
+        dr.selectByVisibleText(Role);
     }
-    public static void enterCellPhone() {
 
-        Cell_Phone_xpath.sendKeys("082555");
+    public static void enterEmail(String Email) {
+        WebDriverWait d = new WebDriverWait(driver, Duration.ofSeconds(2));
+        Email_xpath.sendKeys(Email);
     }
+
+    public static void enterCellPhone(String Cell) {
+
+        Cell_Phone_xpath.sendKeys(Cell);
+    }
+
     public static void clickSaveButton() {
         Save_xpath_Button.click();
+    }
+
+    public static void clickCloseButton() {
+        Close_xpath_button.click();
     }
 
 
