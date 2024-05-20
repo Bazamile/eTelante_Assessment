@@ -19,13 +19,11 @@ public class WebTablesTests extends Base {
 
     @Test(dependsOnMethods = {"clickAddUserButtonTests"})
     public void enterFirstNameTests() {
-
         webTables.enterFirstName(ReadFromExcel.FirstName);
     }
 
     @Test(dependsOnMethods = {"enterFirstNameTests"})
     public void enterLastNameTests() {
-
         webTables.enterLastName(ReadFromExcel.LastName);
     }
     @Test(dependsOnMethods = {"enterLastNameTests"})
